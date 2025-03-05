@@ -1,21 +1,39 @@
 name: Python application
 on:
-  push:
+  push:  # 代码推送触发
+    branches:
+      - main  # 当推送到 "main" 分支时触发 
+    paths:  # 当推送的更改包含以下路径时触发
+      - '.github/workflows/python-app.yml'  # 包含此工作流文件的更改
+      - 'autoUrl.py'  # 包含任何以 ".py" 结尾的文件的更改
+
+    
   schedule:
     - cron: '0 21 * * 1'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 允许写入仓库
 
     steps:
       - name: 检查分支
         uses: actions/checkout@v3
+        with:
+         persist-credentials: true  # 保留 GITHUB_TOKEN 的凭据
 
       - name: 安装 Python 3.10
         uses: actions/setup-python@v4
         with:
           python-version: 3.10.4
+      - name: Cache dependencies  # 步骤名称：缓存依赖项
+        uses: actions/cache@v3  # 使用 "actions/cache" 动作，版本更新为 "v3"
+        with:
+          path: ~/.cache/pip  # 指定缓存路径为 pip 的缓存目录
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}  # 缓存键，基于运行器操作系统和 requirements.txt 文件的哈希值
+          restore-keys: |  # 备用缓存键，用于在找不到精确匹配时回退
+            ${{ runner.os }}-pip-
 
       - name: 安装模块
         run: |
@@ -26,14 +44,15 @@ jobs:
         run: |
           export TZ='Asia/Shanghai'
           python autoUrl.py
-      - name: 暂存提交
-        run: |
-          git config --global user.name 'hl128k'
-          git config --global user.email 'hl128k@qq.com'
-          export TZ='Asia/Shanghai'
-          git add .
-          git commit -m "update" -a
-      - name: 推送
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push if changed  # 步骤名称：如果更改则提交并推送
+        run: |  # 运行以下 shell 命令
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"  # 设置 git 用户邮箱
+          git config --local user.name "github-actions[bot]"  # 设置 git 用户名
+          git add -A  # 添加所有更改到暂存区
+          if ! git diff --staged --quiet; then  # 如果存在暂存的更改
+            git commit -m "Auto-update tvbox files"  # 提交更改，附带消息 "Auto-update live files"
+            git push  # 推送更改到远程仓库
+          fi  # 结束 if 语句
+
+    env:  # 定义环境变量
+      TZ: Asia/Shanghai  # 设置时区为 "Asia/Shanghai"
