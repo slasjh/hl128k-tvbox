@@ -6,7 +6,7 @@
 	//"spider": "https://fastly.jsdelivr.net/gh/franksun1211/TXT@main/TVbox/E8jin/xyqxbpq.jar",
     "wallpaper": "http://bobohome.ignorelist.com:20247/bing",
     "logo": "https://fastly.jsdelivr.net/gh/franksun1211/TVBOX@main/sun.jpg",
-	"notice": "[0706]FK20251023-B",
+	"notice": "[0706]FK20251025🍉",
     "sites": [
         {
             "key": "豆瓣",
@@ -112,7 +112,16 @@
                 "site": "aHR0cDovL3YubGt1eXMuY24="
             }
         },
-       
+       {
+      "key": "云云.py",
+      "name": "🥇云云",
+      "type": 3,
+      "api": "https://fastly.jsdelivr.net/gh/franksun1211/TXT@main/TVbox/E8jin/lib/云云.py",
+	  "jar": "https://fastly.jsdelivr.net/gh/franksun1211/TXT@main/TVbox/E8jin/xyqxbpq.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
         
         {
             "key": "立播弹幕",
@@ -1605,7 +1614,7 @@
             }
         },
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-{"key":"Apple","name":"Apple","type":3,"api":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/drpy_js/Apple.py","jar":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/yt.jar","searchable":1,"filterable":0,"changeable":0},
+{"key":"Apple","name":"🥇Apple","type":3,"api":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/drpy_js/Apple.py","jar":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/yt.jar","searchable":1,"filterable":0,"changeable":0},
 //{"key":"麦田","name":"麦田/搜索无图","type":3,"api":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/drpy_js/麦田.py","jar":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/yt.jar","searchable":1,"filterable":0,"changeable":0},
 {"key":"4KVM","name":"4KVM","type":3,"api":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/drpy_js/4KVM.py","jar":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/yt.jar","searchable":1,"filterable":0,"changeable":0},
 {"key":"爱壹帆","name":"爱壹帆","jar":"https://fastly.jsdelivr.net/gh/su147456888444/tvbox@main/18.jar;md5;875ce871703d1c382e0498711b9d3ba0","type":3,"searchable":1,"changeable":0,"quickSearch":0,"style":{"type":"rect","ratio":0.75},
@@ -2546,6 +2555,8 @@
         "static-mozai.4gtv.tv"
     ]
 }
+
+
 
 
 
